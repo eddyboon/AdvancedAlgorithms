@@ -4,5 +4,5 @@ The goal in the bin packing problem is to pack objects of various sizes into bin
 
 ## How to run the files
 
-Make sure you are in the root directory.\n
+Make sure you are in the root directory.
 Run `make` and followed by `./binPackingTest`

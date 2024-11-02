@@ -3,7 +3,10 @@
 
 #include <vector>
 #include <algorithm>
+#include  <numeric>
 
-int binPacking(std::vector<int> &items, int binSize);
+int firstFitDecreasing(std::vector<int> &items, int binSize);
+
+int bestFitDecreasing(std::vector<int> &items, int binSize);
 
 #endif

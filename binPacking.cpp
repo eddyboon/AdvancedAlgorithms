@@ -1,6 +1,8 @@
 #include "binPacking.hpp"
 
-int binPacking(std::vector<int> &items, int binSize) {
+#include <numeric>
+
+int firstFitDecreasing(std::vector<int> &items, int binSize) {
     // Sort items in descending order
     std::sort(items.begin(), items.end(), std::greater<int>());
     std::vector<int> bins;
@@ -32,3 +34,38 @@ int binPacking(std::vector<int> &items, int binSize) {
 
     return bins.size();
 }
+
+int bestFitDecreasing(std::vector<int> &items, int binSize) {
+
+    // Sort in decreasing order
+    std::sort(items.begin(), items.end(), std::greater<int>());
+    std::vector<int> bins;
+
+    for(int item : items) {
+        bool foundBin = false;
+
+        int bestBinIndex = -1;
+        int minSpaceLeft = binSize + 1;
+
+        for(int i = 0; i < bins.size(); ++i) {
+            if(bins[i] >= item && bins[i] - item < minSpaceLeft) {
+                bestBinIndex = i;
+                minSpaceLeft = bins[i] - item;
+            }
+        }
+
+        // Place item in the best fitting bin, if available
+        if (bestBinIndex != -1) {
+            bins[bestBinIndex] -= item;
+            foundBin = true;
+        }
+
+        // If no suitable bin was found, create a new bin
+        if (!foundBin) {
+            bins.push_back(binSize - item);
+        }
+    }
+
+    return bins.size();
+}
+

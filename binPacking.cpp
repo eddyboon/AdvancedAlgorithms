@@ -41,6 +41,13 @@ int bestFitDecreasing(std::vector<int> &items, int binSize) {
     std::sort(items.begin(), items.end(), std::greater<int>());
     std::vector<int> bins;
 
+    // Ensure all items can fit in a bin
+    for (int item : items) {
+        if (item > binSize) {
+            return -1;
+        }
+    }
+
     for(int item : items) {
         bool foundBin = false;
 

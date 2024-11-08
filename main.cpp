@@ -13,16 +13,6 @@ TEST(binPackingTest, SimpleTest) {
     EXPECT_EQ(resultBFD, 2);
 }
 
-// Test exact result of 4 bins is returned on small input of items
-TEST(binPackingTest, FourBins) {
-    std::vector<int> items = {5, 7, 6, 2, 8, 4, 3};
-    int binSize = 10;
-    int resultFFD = firstFitDecreasing(items, binSize);
-    int resultBFD = bestFitDecreasing(items, binSize);
-    EXPECT_EQ(resultFFD, 4);
-    EXPECT_EQ(resultBFD, 4);
-}
-
 // Test exact result of 3 bins is returned on small input of items
 TEST(binPackingTest, ThreeBins) {
     std::vector<int> items = {8, 8, 4, 4, 2, 2};
@@ -31,6 +21,16 @@ TEST(binPackingTest, ThreeBins) {
     int resultBFD = bestFitDecreasing(items, binSize);
     EXPECT_EQ(resultFFD, 3);
     EXPECT_EQ(resultBFD, 3);
+}
+
+// Test exact result of 4 bins is returned on small input of items
+TEST(binPackingTest, FourBins) {
+    std::vector<int> items = {5, 7, 6, 2, 8, 4, 3};
+    int binSize = 10;
+    int resultFFD = firstFitDecreasing(items, binSize);
+    int resultBFD = bestFitDecreasing(items, binSize);
+    EXPECT_EQ(resultFFD, 4);
+    EXPECT_EQ(resultBFD, 4);
 }
 
 // Test empty items edge case
@@ -63,7 +63,7 @@ TEST(binPackingTest, SingleBinWithExtraSpace) {
     EXPECT_EQ(resultBFD, 1);
 }
 
-// Test new bin is correctly created when bin is unable to accomodate multiple items
+// Test new bin is correctly created when bin is unable to accommodate multiple items
 TEST(binPackingTest, SingleBinWithNoSpace) {
     std::vector<int> items = {5, 5};
     int binSize = 9;
@@ -74,7 +74,7 @@ TEST(binPackingTest, SingleBinWithNoSpace) {
 }
 
 // Test item correctly assigned to bin of matching capacity
-TEST(binPackingTest, SingleItemWithJustEnoughSpace) {
+TEST(binPackingTest, SingleBinWithJustEnoughSpace) {
     std::vector<int> items = {10};
     int binSize = 10;
     int resultFFD = firstFitDecreasing(items, binSize);
@@ -107,7 +107,7 @@ TEST(binPackingTest, SingleItemWithNoSpace) {
 
 
 // Test FFD correctly assigns many small items to bins
-TEST(binPackingTest, FFDManySmallItems) {
+TEST(binPackingTest, ManySmallItems) {
     std::vector<int> items(1000, 1);  // 1000 items of size 1
     int binSize = 10;
 
@@ -118,12 +118,21 @@ TEST(binPackingTest, FFDManySmallItems) {
     EXPECT_EQ(resultBFD, 100);
 }
 
+// Test both algorithms return identical result when given items of varying sizes
+TEST(binPackingTest, MixedSmallAndLargeItems) {
+    std::vector<int> items = {9, 1, 8, 2, 7, 3, 6, 4, 5};
+    int binSize = 10;
+    int resultFFD = firstFitDecreasing(items, binSize);
+    int resultBFD = bestFitDecreasing(items, binSize);
+    EXPECT_EQ(resultFFD, resultBFD);  // Expect a similar number of bins for both
+}
+
 // Stress test to ensure a result is returned with a large input of items
 TEST(binPackingTest, LargeNumberOfItems) {
-    std::vector<int> items(1000, 2);  // 1000 items of size 2
+    std::vector<int> items(10000, 2);  // 10000 items of size 2
     int binSize = 10;
-    EXPECT_GT(firstFitDecreasing(items, binSize), 0);
-    EXPECT_GT(bestFitDecreasing(items, binSize), 0);
+    EXPECT_EQ(firstFitDecreasing(items, binSize), 2000);
+    EXPECT_EQ(bestFitDecreasing(items, binSize), 2000);
 }
 
 

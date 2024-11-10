@@ -2,13 +2,33 @@
 
 The goal in the bin packing problem is to pack objects of various sizes into bins of fixed capacity in such a way that the total number of bins used in minimized. Each bins has a fixed capacity and no bin can contain objects whose size exceeds the bin's capacity.
 
-## How to run the files
+The algorithms implemented to solve this problem:
+- First Fit Decreasing
+- Best Fit Decreasing
 
-Make sure you are in the root directory.<br>
-Run `make` and followed by `./binPackingTest`<br>
+Please view the report for more information on the problem and the solutions.
 
-After any changes to a file, run `make` to recompile so that `./binPackingTest` will have the new updated code.
+## Pre-requisites
+
+- Make
+- G++
+
+If on Mac, these will be already installed if the Xcode Command Line tools are installed. If not done already, open the terminal and run `xcode-select --install`
+
+If on Windows, it is recommended to installed [Windows Subsystem For Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) as the Make file uses Unix-based terminal commands. Once WSL is installed, run the following to install the project dependencies:
+1. `sudo apt update`
+2. `sudo apt install make`
+3. `sudo apt install g++`
+
+
+## Running the test suite
+
+1. Navigate to the project's root directory.
+2. Run `make` to compile the test executable.
+3. Run `./binPackingTest` to run the tests.
+
+If any modifications are made to the project files, `make` will need to be re-run to recompile the test executable.
 
 ### Clean up
 
-After compiling and running the test, to clear all object files created during the compilation, run `make clean`. This will automatically remove the files created during compilation without affecting the source code.
+If necessary, run `make clean` to clean-up the test executable

@@ -31,4 +31,4 @@ If any modifications are made to the project files, `make` will need to be re-ru
 
 ### Clean up
 
-If necessary, run `make clean` to clean-up the test executable
+If necessary, run `make clean` to clean-up the files the generated test files.

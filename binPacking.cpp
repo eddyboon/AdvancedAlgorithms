@@ -56,7 +56,7 @@ int bestFitDecreasing(std::vector<int> &items, int binSize) {
         int minSpaceLeft = binSize + 1;  // Track the minimum remaining space after placing the item
 
         // Find the best bin that has enough space to accommodate the item
-        for(int i = 0; i < bins.size(); ++i) {
+        for(unsigned int i = 0; i < bins.size(); ++i) {
             if(bins[i] >= item && bins[i] - item < minSpaceLeft) {
                 bestBinIndex = i;                   // Update index of the best bin found so far
                 minSpaceLeft = bins[i] - item;      // Update minimum space left after placement

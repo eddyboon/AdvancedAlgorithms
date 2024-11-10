@@ -15,7 +15,7 @@ Please view the report for more information on the problem and the solutions.
 
 If on Mac, these will be already installed if the Xcode Command Line tools are installed. If not done already, open the terminal and run `xcode-select --install`
 
-If on Windows, it is recommended to installed [Windows Subsystem For Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) as the Make file uses Unix-based terminal commands. Once WSL is installed, run the following to install the project dependencies:
+If on Windows, it is recommended to install [Windows Subsystem For Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) as the Make file uses Unix-based terminal commands. Once WSL is installed, run the following to install the project dependencies:
 1. `sudo apt update`
 2. `sudo apt install make`
 3. `sudo apt install g++`

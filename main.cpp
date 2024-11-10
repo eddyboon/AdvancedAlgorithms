@@ -130,3 +130,7 @@ TEST(binPackingTest, LargeNumberOfItems) {
     EXPECT_EQ(bestFitDecreasing(items, binSize), 2000);   // Expect 2000 bins
 }
 
+int main(int argc, char* argv[]) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
